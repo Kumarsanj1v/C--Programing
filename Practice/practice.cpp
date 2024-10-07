@@ -17,7 +17,7 @@ void changeArray(int array[], int num, int i) {
     }
     array[i] = i + 1;
     changeArray(array,num,i+1);
-    array[i] = i - 2;
+    array[i] = i - 2; // backtracking
 }
 
 int main() {    

@@ -1,31 +1,33 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
-void printArray(int array[], int num) {
-
-    for(int i=0; i <num; i++) {
-        cout << array[i] << " ";
-    }
-    cout << endl;
-}
-
-void changeArray(int array[], int num, int i) {
-
-    if (i == num) {
-        printArray(array,num);
+int mazePath(int maze[4][4], int row, int col, string str, vector<vector <bool>> vis, int N) {
+    //base case
+    if(row == N-1 && col == N-1 && maze[row][col] == 1)
+    {
+        cout << str << endl;
         return;
     }
-    array[i] = i + 1;
-    changeArray(array,num,i+1);
-    array[i] = i - 2; // backtracking
+    //move up
+    if(row-1 >= 0 && !vis[row-1][col] == 0 && maze[row-1][col] == 1) {
+        vis[row-1][col] == true;
+        mazePath(maze, row-1,col,str+'U',vis,N);
+        vis[row-1][col] == false;
+    }
+
+    
+
+
+
+
 }
 
-int main() {    
-
-    int array[5] = {0};
-    int num = 5;
-    changeArray(array, num, 0);
-    printArray(array,num);
+int main() {
+    int maze[4][4] ={{1,0,0,0},
+                     {1,1,0,1},
+                     {1,1,0,0},
+                     {0,1,1,1}};
 
     return 0;
 }

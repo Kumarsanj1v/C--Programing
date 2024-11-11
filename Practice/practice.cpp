@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <string>
 using namespace std;
 
 int mazePath(int maze[4][4], int row, int col, string str, vector<vector <bool>> vis, int N) {
@@ -16,7 +17,14 @@ int mazePath(int maze[4][4], int row, int col, string str, vector<vector <bool>>
         vis[row-1][col] == false;
     }
 
-    
+    //move down
+    if(row+1 <= N && !vis[row+1][col] == 0 && maze[row+1][col] == 1) {
+        vis[row+1][col] == true;
+        mazePath(maze, row+1,col,str+'D',vis,N);
+        vis[row+1][col] == false;
+    }
+
+
 
 
 
